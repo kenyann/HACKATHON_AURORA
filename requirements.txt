@@ -1,2 +1,9 @@
-pandas
-openpyxl
+langchain
+streamlit
+openai==0.28
+chromadb <= 0.3.29
+tiktoken
+pypdf
+unstructured[all-docs]
+pdfminer
+poppler-utils
