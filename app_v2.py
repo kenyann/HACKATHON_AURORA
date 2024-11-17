@@ -1,10 +1,8 @@
 import streamlit as st
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.vectorstores import Chroma
-from langchain.text_splitter import CharacterTextSplitter
 from langchain.chains import ConversationalRetrievalChain
-from langchain.chat_models import ChatOpenAI
-from langchain.document_loaders import UnstructuredFileLoader
+from langchain_openai import ChatOpenAI
+from flow import extract_pdf, summarize
+
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -14,8 +12,7 @@ st.header("Upload your own files and ask questions like ChatGPT")
 st.subheader('File type supported: PDF/DOCX/TXT :city_sunrise:')
 
 
-llm = ChatOpenAI(temperature=0, max_tokens=1000,
-                 model_name="gpt-3.5-turbo", streaming=True)
+llm = ChatOpenAI(model='gpt-4o-mini', api_key=os.getenv('OPENAI_API_KEY'))
 
 
 with st.sidebar:
@@ -28,49 +25,31 @@ if uploaded_files:
     print(f"Number of files uploaded: {len(uploaded_files)}")
 
     # Load the data and perform preprocessing only if it hasn't been loaded before
-    if "processed_data" not in st.session_state:
-        # Load the data from uploaded PDF files
-        documents = []
-        for uploaded_file in uploaded_files:
-            # Get the full file path of the uploaded file
-            file_path = os.path.join(os.getcwd(), uploaded_file.name)
 
-            # Save the uploaded file to disk
-            with open(file_path, "wb") as f:
-                f.write(uploaded_file.getvalue())
+    # Load the data from uploaded PDF files
+    documents = []
+    for uploaded_file in uploaded_files:
+        # Get the full file path of the uploaded file
+        # file_path = os.path.join(os.getcwd(), uploaded_file.name)
+        file_path = os.path.join('upload', uploaded_file.name)
 
-            # Use UnstructuredFileLoader to load the PDF file
-            loader = UnstructuredFileLoader(file_path)
-            loaded_documents = loader.load()
-            print(f"Number of files loaded: {len(loaded_documents)}")
+        # Save the uploaded file to disk
+        with open(file_path, "wb") as f:
+            f.write(uploaded_file.getvalue())
 
-            # Extend the main documents list with the loaded documents
-            documents.extend(loaded_documents)
+        # Use UnstructuredFileLoader to load the PDF file
+        loaded_documents = extract_pdf(file_path)
 
-        # Chunk the data, create embeddings, and save in vectorstore
-        text_splitter = CharacterTextSplitter(
-            chunk_size=2000, chunk_overlap=200)
-        document_chunks = text_splitter.split_documents(documents)
+        documents.append(loaded_documents)
 
-        embeddings = OpenAIEmbeddings()
-        vectorstore = Chroma.from_documents(document_chunks, embeddings)
+    # Store the processed data in session state for reuse
+    st.session_state.processed_data = {
+        "documents": documents
+    }
 
-        # Store the processed data in session state for reuse
-        st.session_state.processed_data = {
-            "document_chunks": document_chunks,
-            "vectorstore": vectorstore,
-        }
-
-        # Print the number of total chunks to console
-        print(f"Number of total chunks: {len(document_chunks)}")
-
-    else:
-        # If the processed data is already available, retrieve it from session state
-        document_chunks = st.session_state.processed_data["document_chunks"]
-        vectorstore = st.session_state.processed_data["vectorstore"]
-
+    documents = st.session_state.processed_data["documents"]
+    # print(documents)
     # Initialize Langchain's QA Chain with the vectorstore
-    qa = ConversationalRetrievalChain.from_llm(llm, vectorstore.as_retriever())
 
     # Initialize chat history
     if "messages" not in st.session_state:
@@ -81,21 +60,26 @@ if uploaded_files:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
 
+    if not documents:
+        summary = summarize(documents)
+        st.session_state.messages.append(
+            {"role": "assistant", "content": summary.content})
+        st.markdown(summary.content)
+
     # Accept user input
-    if prompt := st.chat_input("Ask your questions?"):
+    if prompt := st.chat_input("Upload your files or your requirements"):
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
 
         # Query the assistant using the latest chat history
-        result = qa({"question": prompt, "chat_history": [
-                    (message["role"], message["content"]) for message in st.session_state.messages]})
+        result = llm.query(prompt, messages=st.session_state.messages)
 
         # Display assistant response in chat message container
         with st.chat_message("assistant"):
             message_placeholder = st.empty()
             full_response = ""
-            full_response = result["answer"]
+            full_response = result.content
             message_placeholder.markdown(full_response + "|")
         message_placeholder.markdown(full_response)
         print(full_response)
