@@ -11,6 +11,7 @@ import Chat from "./pages/chat/Chat";
 import LayoutWrapper from "./layoutWrapper";
 import i18next from "./i18n/config";
 
+
 initializeIcons();
 
 const router = createHashRouter([
