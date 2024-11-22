@@ -7,9 +7,14 @@ import { useLogin } from "../../authConfig";
 
 import { LoginButton } from "../../components/LoginButton";
 import { IconButton } from "@fluentui/react";
+import { LanguagePicker } from "../../i18n/LanguagePicker";
+import {
+    configApi,
+} from "../../api";
 
 const Layout = () => {
-    const { t } = useTranslation();
+    const [showLanguagePicker, setshowLanguagePicker] = useState<boolean>(false);
+    const { t, i18n } = useTranslation();
     const [menuOpen, setMenuOpen] = useState(false);
     const menuRef: RefObject<HTMLDivElement> = useRef(null);
 
@@ -23,6 +28,13 @@ const Layout = () => {
         }
     };
 
+    const getConfig = async () => {
+        configApi().then(config => {
+            setshowLanguagePicker(config.showLanguagePicker);
+
+        });
+    };
+
     useEffect(() => {
         if (menuOpen) {
             document.addEventListener("mousedown", handleClickOutside);
@@ -34,6 +46,10 @@ const Layout = () => {
         };
     }, [menuOpen]);
 
+    useEffect(() => {
+        getConfig();
+    }, []);
+
     return (
         <div className={styles.layout}>
             <header className={styles.header} role={"banner"}>
@@ -41,29 +57,9 @@ const Layout = () => {
                     <Link to="/" className={styles.headerTitleContainer}>
                         <h3 className={styles.headerTitle}>{t("headerTitle")}</h3>
                     </Link>
-                    <nav>
-                        <ul className={`${styles.headerNavList} ${menuOpen ? styles.show : ""}`}>
-                            <li>
-                                <NavLink
-                                    to="/"
-                                    className={({ isActive }) => (isActive ? styles.headerNavPageLinkActive : styles.headerNavPageLink)}
-                                    onClick={() => setMenuOpen(false)}
-                                >
-                                    {t("chat")}
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    to="/qa"
-                                    className={({ isActive }) => (isActive ? styles.headerNavPageLinkActive : styles.headerNavPageLink)}
-                                    onClick={() => setMenuOpen(false)}
-                                >
-                                    {t("qa")}
-                                </NavLink>
-                            </li>
-                        </ul>
-                    </nav>
+                    <div></div>
                     <div className={styles.loginMenuContainer}>
+                        {showLanguagePicker && <LanguagePicker onLanguageChange={newLang => i18n.changeLanguage(newLang)} />}
                         {useLogin && <LoginButton />}
                         <IconButton
                             iconProps={{ iconName: "GlobalNavButton" }}
@@ -71,6 +67,7 @@ const Layout = () => {
                             onClick={toggleMenu}
                             ariaLabel={t("labels.toggleMenu")}
                         />
+
                     </div>
                 </div>
             </header>

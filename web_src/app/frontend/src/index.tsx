@@ -23,14 +23,14 @@ const router = createHashRouter([
                 index: true,
                 element: <Chat />
             },
-            {
-                path: "qa",
-                lazy: () => import("./pages/ask/Ask")
-            },
-            {
-                path: "*",
-                lazy: () => import("./pages/NoPage")
-            }
+            // {
+            //     path: "qa",
+            //     lazy: () => import("./pages/ask/Ask")
+            // },
+            // {
+            //     path: "*",
+            //     lazy: () => import("./pages/NoPage")
+            // }
         ]
     }
 ]);
