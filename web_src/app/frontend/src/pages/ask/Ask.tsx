@@ -18,6 +18,7 @@ import { useMsal } from "@azure/msal-react";
 import { TokenClaimsDisplay } from "../../components/TokenClaimsDisplay";
 import { LoginContext } from "../../loginContext";
 import { LanguagePicker } from "../../i18n/LanguagePicker";
+import { LoginButton } from "../../components/LoginButton";
 
 export function Component(): JSX.Element {
     const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
@@ -43,7 +44,7 @@ export function Component(): JSX.Element {
     const [showGPT4VOptions, setShowGPT4VOptions] = useState<boolean>(false);
     const [showSemanticRankerOption, setShowSemanticRankerOption] = useState<boolean>(false);
     const [showVectorOption, setShowVectorOption] = useState<boolean>(false);
-    const [showUserUpload, setShowUserUpload] = useState<boolean>(false);
+    const [showUserUpload, setShowUserUpload] = useState<boolean>(true);
     const [showLanguagePicker, setshowLanguagePicker] = useState<boolean>(false);
     const [showSpeechInput, setShowSpeechInput] = useState<boolean>(false);
     const [showSpeechOutputBrowser, setShowSpeechOutputBrowser] = useState<boolean>(false);
@@ -246,9 +247,13 @@ export function Component(): JSX.Element {
                 <title>{t("pageTitle")}</title>
             </Helmet>
             <div className={styles.askTopSection}>
+                {useLogin && !loggedIn && <LoginButton />}
+                <LoginButton />
                 <div className={styles.commandsContainer}>
-                    {showUserUpload && <UploadFile className={styles.commandButton} disabled={loggedIn} />}
+                    {showUserUpload && <UploadFile className={styles.commandButton} />}
                     <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
+                    <UploadFile className={styles.commandButton} />
+
                 </div>
                 <h1 className={styles.askTitle}>{t("askTitle")}</h1>
                 <div className={styles.askQuestionInput}>

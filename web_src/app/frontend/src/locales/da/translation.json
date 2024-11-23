@@ -1,6 +1,6 @@
 {
-    "pageTitle": "Azure OpenAI + AI Search",
-    "headerTitle": "Azure OpenAI + AI Search",
+    "pageTitle": "Smart-Req Accelerator",
+    "headerTitle": "Smart-Req Accelerator",
     "chat": "Chat",
     "qa": "Stil et spørgsmål",
     "login": "Log ind",
@@ -33,7 +33,7 @@
         "fileDeleted": "Fil slettet"
     },
     "developerSettings": "Udviklerindstillinger",
-    "chatEmptyStateTitle": "Chat med dine data",
+    "chatEmptyStateTitle": "Aurora Team",
     "chatEmptyStateSubtitle": "Spørg om hvad som helst eller prøv et eksempel",
     "defaultExamples": {
         "1": "Hvad er inkluderet i min Northwind Health Plus plan, som ikke er i standardplanen?",

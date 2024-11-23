@@ -17,6 +17,7 @@
     align-items: center;
     width: 100%;
     max-height: calc(100vh - 10rem);
+
 }
 
 .chatEmptyState {
@@ -30,10 +31,11 @@
 }
 
 .chatEmptyStateTitle {
-    font-size: 2.75rem;
+    font-size: 1.75rem;
     font-weight: 600;
     margin-top: 0;
     margin-bottom: 1.875rem;
+    color: #004e92;
 }
 
 .chatEmptyStateSubtitle {
@@ -101,7 +103,8 @@
     display: flex;
     padding-left: 1rem;
     padding-right: 1rem;
-    align-self: flex-end;
+    /* align-self: flex-end; */
+    align-items: end;
 }
 
 .commandButton {

@@ -21,7 +21,7 @@ export const LanguagePicker = ({ onLanguageChange }: Props) => {
 
     return (
         <div className={styles.languagePicker}>
-            <LocalLanguage24Regular className={styles.languagePickerIcon} />
+            {/* <LocalLanguage24Regular className={styles.languagePickerIcon} /> */}
             <Dropdown
                 id={languagePickerId}
                 selectedKey={i18n.language}
