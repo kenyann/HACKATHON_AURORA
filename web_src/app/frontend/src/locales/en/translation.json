@@ -36,9 +36,9 @@
     "chatEmptyStateTitle": "Aurora Team",
     "chatEmptyStateSubtitle": "Ask anything or try an example",
     "defaultExamples": {
-        "1": "I want to summarize a requirement.",
-        "2": "I want to find some historical proposals that meets a requirement.",
-        "3": "Can you suggest me architecture to migrate enterprise data to cloud using Azure?",
+        "1": "I want to summarize this requirement.",
+        "2": "I want to find some historical proposals that relvant to this requirement.",
+        "3": "Do you have any unclear points about this requirement?",
         "placeholder": "Type a new question (e.g. Does Labba requirement is clear enough?)"
     },
     "askTitle": "Ask your data",

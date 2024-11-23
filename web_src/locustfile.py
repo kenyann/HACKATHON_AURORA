@@ -18,8 +18,8 @@ class ChatUser(HttpUser):
                     {
                         "content": random.choice(
                             [
-                                "I want to summarize a requirement.",
-                                "I want to find some historical proposals that meets a requirement.",
+                                "I want to summarize this requirement.",
+                                "I want to find some historical proposals that relevants to this requirement.",
                             ]
                         ),
                         "role": "user",

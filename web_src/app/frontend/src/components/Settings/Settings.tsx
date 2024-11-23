@@ -304,7 +304,7 @@ export const Settings = ({
                     className={styles.settingsSeparator}
                     checked={useSuggestFollowupQuestions}
                     label={t("labels.useSuggestFollowupQuestions")}
-                    onChange={(_ev, checked) => onChange("useSuggestFollowupQuestions", !!checked)}
+                    onChange={(_ev, checked) => onChange("useSuggestFollowupQuestions", !checked)}
                     aria-labelledby={suggestFollowupQuestionsId}
                     onRenderLabel={props =>
                         renderLabel(props, suggestFollowupQuestionsId, suggestFollowupQuestionsFieldId, t("helpTexts.suggestFollowupQuestions"))
