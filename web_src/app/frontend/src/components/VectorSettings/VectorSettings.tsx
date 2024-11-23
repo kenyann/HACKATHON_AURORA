@@ -4,7 +4,7 @@ import { useId } from "@fluentui/react-hooks";
 import { useTranslation } from "react-i18next";
 
 import styles from "./VectorSettings.module.css";
-import { HelpCallout } from "../../components/HelpCallout";
+import { HelpCallout } from "../HelpCallout";
 import { RetrievalMode, VectorFieldOptions } from "../../api";
 
 interface Props {

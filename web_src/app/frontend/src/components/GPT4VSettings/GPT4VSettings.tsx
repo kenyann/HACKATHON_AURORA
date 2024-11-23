@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import styles from "./GPT4VSettings.module.css";
 import { GPT4VInput } from "../../api";
-import { HelpCallout } from "../../components/HelpCallout";
+import { HelpCallout } from "../HelpCallout";
 
 interface Props {
     gpt4vInputs: GPT4VInput;
