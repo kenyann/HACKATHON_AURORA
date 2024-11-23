@@ -103,7 +103,6 @@
     display: flex;
     padding-left: 1rem;
     padding-right: 1rem;
-    /* align-self: flex-end; */
     align-items: end;
 }
 
