@@ -25,9 +25,9 @@ export const UploadFile: React.FC<Props> = ({ className, disabled }: Props) => {
     const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
     const { t } = useTranslation();
 
-    if (!useLogin) {
-        throw new Error("The UploadFile component requires useLogin to be true");
-    }
+    // if (!useLogin) {
+    //     throw new Error("The UploadFile component requires useLogin to be true");
+    // }
 
     const client = useMsal().instance;
 
@@ -98,8 +98,7 @@ export const UploadFile: React.FC<Props> = ({ className, disabled }: Props) => {
         } catch (error) {
             console.error(error);
             setIsUploading(false);
-            // setUploadedFileError(t("upload.uploadedFileError"));
-            setUploadedFileError("Your file is uploaded successfully");
+            setUploadedFileError(t("upload.uploadedFileError"));
         }
     };
 
