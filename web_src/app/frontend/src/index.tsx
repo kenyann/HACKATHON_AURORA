@@ -10,7 +10,7 @@ import "./index.css";
 import Chat from "./pages/chat/Chat";
 import LayoutWrapper from "./layoutWrapper";
 import i18next from "./i18n/config";
-
+import LoginPage from "./pages/login/LoginPage";
 
 initializeIcons();
 
@@ -21,6 +21,7 @@ const router = createHashRouter([
         children: [
             {
                 index: true,
+                // path: "chat",
                 element: <Chat />
             },
             // {
@@ -28,8 +29,8 @@ const router = createHashRouter([
             //     lazy: () => import("./pages/ask/Ask")
             // },
             // {
-            //     path: "*",
-            //     lazy: () => import("./pages/NoPage")
+            //     index: true,
+            //     element: <LoginPage />
             // }
         ]
     }
