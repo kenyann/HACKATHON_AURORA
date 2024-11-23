@@ -3,17 +3,17 @@
 Consult the main [README](../README.md) for general information about the project.
 These are advanced topics that are not necessary for a basic deployment.
 
-* [Deploying with the Azure Developer CLI](azd.md)
-  * [Deploying with existing Azure resources](deploy_existing.md)
-    * [Login and access control](login_and_acl.md)
-* [Debugging the app on App Service](appservice.md)
-* [Local development](localdev.md)
-* [App customization](customization.md)
-* [Data ingestion](data_ingestion.md)
+* [Deploying with the Azure Developer CLI](web_src/docs/azd.md)
+  * [Deploying with existing Azure resources](web_src/docs/deploy_existing.md)
+    * [Login and access control](web_src/docs/login_and_acl.md)
+* [Debugging the app on App Service](web_src/docs/appservice.md)
+* [Local development](web_src/docs/localdev.md)
+* [App customization](web_src/docs/customization.md)
+* [Data ingestion](web_src/docs/data_ingestion.md)
 
 ## Deploying
 
-The steps below will provision Azure resources and deploy the application code to Azure Container Apps. To deploy to Azure App Service instead, follow [the app service deployment guide](docs/azure_app_service.md).
+The steps below will provision Azure resources and deploy the application code to Azure Container Apps. To deploy to Azure App Service instead, follow [the app service deployment guide](web_src/docs/azure_app_service.md).
 
 1. Login to your Azure account:
 
@@ -35,14 +35,14 @@ The steps below will provision Azure resources and deploy the application code t
 
     Enter a name that will be used for the resource group.
     This will create a new folder in the `.azure` folder, and set it as the active environment for any calls to `azd` going forward.
-1. (Optional) This is the point where you can customize the deployment by setting environment variables, in order to [use existing resources](docs/deploy_existing.md), [enable optional features (such as auth or vision)](docs/deploy_features.md), or [deploy to free tiers](docs/deploy_lowcost.md).
+1. (Optional) This is the point where you can customize the deployment by setting environment variables, in order to [use existing resources](web_src/docs/deploy_existing.md), [enable optional features (such as auth or vision)](web_src/docs/deploy_features.md), or [deploy to free tiers](web_src/docs/deploy_lowcost.md).
 1. Run `azd up` - This will provision Azure resources and deploy this sample to those resources, including building the search index based on the files found in the `./data` folder.
     - **Important**: Beware that the resources created by this command will incur immediate costs, primarily from the AI Search resource. These resources may accrue costs even if you interrupt the command before it is fully executed. You can run `azd down` or delete the resources manually to avoid unnecessary spending.
     - You will be prompted to select two locations, one for the majority of resources and one for the OpenAI resource, which is currently a short list. That location list is based on the [OpenAI model availability table](https://learn.microsoft.com/azure/cognitive-services/openai/concepts/models#model-summary-table-and-region-availability) and may become outdated as availability changes.
 1. After the application has been successfully deployed you will see a URL printed to the console.  Click that URL to interact with the application in your browser.
 It will look like the following:
 
-!['Output from running azd up'](docs/images/endpoint.png)
+!['Output from running azd up'](web_src/docs/images/endpoint.png)
 
 > NOTE: It may take 5-10 minutes after you see 'SUCCESS' for the application to be fully deployed. If you see a "Python Developer" welcome screen or an error page, then wait a bit and refresh the page.
 
@@ -80,7 +80,7 @@ You can only run locally **after** having successfully run the `azd up` command.
 2. Change dir to `app`
 3. Run `./start.ps1` or `./start.sh` or run the "VS Code Task: Start App" to start the project locally.
 
-See more tips in [the local development guide](docs/localdev.md).
+See more tips in [the local development guide](web_src/docs/localdev.md).
 
 ## Using the app
 
