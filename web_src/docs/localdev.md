@@ -1,4 +1,4 @@
-# RAG chat: Local development of chat app
+# Local development of chat app
 
 After deploying the app to Azure, you may want to continue development locally. This guide explains how to run the app locally, including hot reloading and debugging.
 

@@ -1,4 +1,4 @@
-# RAG chat: Deploying on Azure App Service
+# Deploying on Azure App Service
 
 Due to [a limitation](https://github.com/Azure/azure-dev/issues/2736) of the Azure Developer CLI (`azd`), there can be only one host option in the [azure.yaml](../azure.yaml) file.
 By default, `host: containerapp` is used and `host: appservice` is commented out.
