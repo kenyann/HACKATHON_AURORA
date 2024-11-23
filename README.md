@@ -11,6 +11,9 @@ These are advanced topics that are not necessary for a basic deployment.
 * [App customization](web_src/docs/customization.md)
 * [Data ingestion](web_src/docs/data_ingestion.md)
 
+## Architecture
+!['Architecture'](images/architecture_b.png)
+
 ## Deploying
 
 The steps below will provision Azure resources and deploy the application code to Azure Container Apps. To deploy to Azure App Service instead, follow [the app service deployment guide](web_src/docs/azure_app_service.md).
