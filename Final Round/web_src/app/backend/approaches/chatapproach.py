@@ -18,7 +18,11 @@ class ChatApproach(Approach, ABC):
     NO_RESPONSE = "0"
 
     follow_up_questions_prompt_content = """Generate 3 very brief follow-up questions that the user would likely ask next.
-    Enclose the follow-up questions in double angle brackets. Example:
+    Enclose the follow-up questions in double angle brackets. 
+    If the last request is to Summarize , the follow-up questions should have 2 questions over 3: 1. I want to find historical proposals/documents that relevant to this requirement ; 2. Do you have any unclear points about this requirement?
+    If the last request is to Generate list of questions , the follow-up questions should have 2 questions over 3: 1. Summarize this requirement again. 2. I want to find historical proposals/documents that relevant to this requirement 
+    If the last request is to Find relevant documentations/proposals, the follow-up questions should have 2 questions over 3: 1. Summarize this requirement again. 2. Do you have any unclear points about this requirement?
+
     <<Is there any historical requirements like this?>>
     <<What we are requested to do based on this requirement?>>
     <<Do you have any unclear points based on this requirements?>>

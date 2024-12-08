@@ -31,11 +31,15 @@ async def post_chat_history(auth_claims: Dict[str, Any]):
     entra_oid = auth_claims.get("oid")
     if not entra_oid:
         return jsonify({"error": "User OID not found"}), 401
+    
+    # request_json = await request.get_json()
+    # return request_json.get("answers")
 
     try:
         request_json = await request.get_json()
         id = request_json.get("id")
         answers = request_json.get("answers")
+        # title = answers[0][1]["context"]["thoughts"][3]["description"][0]["sourcefile"].split(".")[0];
         title = answers[0][0][:50] + "..." if len(answers[0][0]) > 50 else answers[0][0]
         timestamp = int(time.time() * 1000)
 
