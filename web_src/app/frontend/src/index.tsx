@@ -10,10 +10,17 @@ import "./index.css";
 import Chat from "./pages/chat/Chat";
 import LayoutWrapper from "./layoutWrapper";
 import i18next from "./i18n/config";
+import LandingPage from "./pages/login/landingPage";
 
 initializeIcons();
 
 const router = createHashRouter([
+    // {
+    //     path: "/",
+    //     element: <LoginPage />
+    //     // element: <Chat />
+    // }
+    // ,
     {
         path: "/",
         element: <LayoutWrapper />,

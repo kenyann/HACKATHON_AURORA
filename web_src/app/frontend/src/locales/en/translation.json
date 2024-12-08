@@ -1,6 +1,6 @@
 {
     "pageTitle": "Smart-Req Accelerator",
-    "headerTitle": "Smart-Req Accelerator",
+    "headerTitle": "Aurora Team",
     "chat": "Chat",
     "qa": "Ask a question",
     "login": "Login",
@@ -33,7 +33,7 @@
         "fileDeleted": "File deleted"
     },
     "developerSettings": "Developer settings",
-    "chatEmptyStateTitle": "Aurora Team",
+    "chatEmptyStateTitle": "SMART-REQ",
     "chatEmptyStateSubtitle": "Ask anything or try an example",
     "defaultExamples": {
         "1": "I want to summarize this requirement.",

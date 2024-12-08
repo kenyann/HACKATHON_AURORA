@@ -371,7 +371,8 @@ const Chat = () => {
                     {!lastQuestionRef.current ? (
                         <div className={styles.chatEmptyState}>
                             {/* <SparkleFilled fontSize={"120px"} primaryFill={"rgba(115, 118, 225, 1)"} aria-hidden="true" aria-label="Chat logo" /> */}
-                            <img src="https://st7kgzeykxb2u3k.blob.core.windows.net/content/android-chrome-192x192.png?sp=r&st=2024-11-23T10:11:14Z&se=2024-11-29T18:11:14Z&skoid=89ecba64-d5b4-4fdc-88eb-a73bb52d2853&sktid=e3875a22-14d3-470f-b496-1908a4006022&skt=2024-11-23T10:11:14Z&ske=2024-11-29T18:11:14Z&sks=b&skv=2022-11-02&sv=2022-11-02&sr=b&sig=tJgHIBXyJ4gpH420zfxslOx8srcpPsTKwxPGGI7Qt84%3D" alt="Chat logo" style={{ width: "120px", height: "120px" }} />
+                            <img src="https://userstrmfiy2zv2kh6k.blob.core.windows.net/user-content/Aurora_logo.gif?sp=r&st=2024-12-08T06:39:14Z&se=2024-12-14T14:39:14Z&skoid=89ecba64-d5b4-4fdc-88eb-a73bb52d2853&sktid=e3875a22-14d3-470f-b496-1908a4006022&skt=2024-12-08T06:39:14Z&ske=2024-12-14T14:39:14Z&sks=b&skv=2022-11-02&spr=https&sv=2022-11-02&sr=b&sig=ML0az7CqK3sd2a8mIFwgNPNqWWqnL9YJg6AKrraa2Uo%3D"
+                                alt="Chat logo" style={{ width: "125px", height: "125px" }} />
                             <h1 className={styles.chatEmptyStateTitle}>{t("chatEmptyStateTitle")}</h1>
                             <h2 className={styles.chatEmptyStateSubtitle}>{t("chatEmptyStateSubtitle")}</h2>
                             {/* {showLanguagePicker && <LanguagePicker onLanguageChange={newLang => i18n.changeLanguage(newLang)} />} */}

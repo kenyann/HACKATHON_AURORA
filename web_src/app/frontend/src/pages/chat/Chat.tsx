@@ -367,7 +367,8 @@ const Chat = () => {
                 <div className={styles.chatContainer}>
                     {!lastQuestionRef.current ? (
                         <div className={styles.chatEmptyState}>
-                            <img src="../../android-chrome-192x192.png" alt="Chat logo" style={{ width: "120px", height: "120px" }} />
+                            <img src="https://userstrmfiy2zv2kh6k.blob.core.windows.net/user-content/Aurora_logo.gif?sp=r&st=2024-12-08T06:39:14Z&se=2024-12-14T14:39:14Z&skoid=89ecba64-d5b4-4fdc-88eb-a73bb52d2853&sktid=e3875a22-14d3-470f-b496-1908a4006022&skt=2024-12-08T06:39:14Z&ske=2024-12-14T14:39:14Z&sks=b&skv=2022-11-02&spr=https&sv=2022-11-02&sr=b&sig=ML0az7CqK3sd2a8mIFwgNPNqWWqnL9YJg6AKrraa2Uo%3D"
+                                alt="Chat logo" style={{ width: "125px", height: "125px" }} />
                             <h1 className={styles.chatEmptyStateTitle}>{t("chatEmptyStateTitle")}</h1>
                             <h2 className={styles.chatEmptyStateSubtitle}>{t("chatEmptyStateSubtitle")}</h2>
                             <ExampleList onExampleClicked={onExampleClicked} useGPT4V={useGPT4V} />
